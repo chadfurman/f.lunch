@@ -29,24 +29,15 @@ if (Meteor.isServer) {
 
 // Calling Email Method Locally
 if (Meteor.isClient) {
-
-    Accounts.config({ restrictCreationByEmailDomain: 'fuzzproductions.com' });
-    Requests = new Mongo.Collection("yelp");
-
-    // This code only runs on the client
-    Template.frontPage.requests = function () {
-        return Requests.find({});
-    };
-
-    Template.create.events({
-        'click .create paper-button': function(event, template){
-            event.preventDefault();
-            var to = template.find('#runEmail').value;
-            var name = template.find('#runName').value;
-            var message = template.find('#runMessage').value;
-            var link = Random.id([9]);
-            var html = Blaze.toHTML(Template.emailLayout);
-            Meteor.call('newRun', to, link, name, message, html);
-        }
-    });
+  Template.create.events({
+    'click .create paper-button': function(event, template){
+      event.preventDefault();
+      var to = template.find('#runEmail').value;
+      var name = template.find('#runName').value;
+      var message = template.find('#runMessage').value;
+      var link = Random.id([9]);
+      var html = Blaze.toHTML(Template.emailLayout);
+      Meteor.call('newRun', to, link, name, message, html);
+    }
+  });
 };
