@@ -13,14 +13,57 @@ Router.configure
 @PublicController = RouteController.extend
   layoutTemplate: "main"
 
+Router.route "/about",
+  controller: "PublicController"
+
+Router.route "/sign-in",
+  name: "accounts.signIn"
+  template: "signIn"
+  controller: "PublicController"
+
+Router.route "/sign-up",
+  name: "accounts.signUp"
+  template: "signUp"
+  controller: "PublicController"
+
+Router.route "/sign-out",
+  action: ->
+    Meteor.logout ->
+      Router.go "/sign-in"
+
+#
+# Dashboard Routes
+#
+@DashboardController = RouteController.extend
+  layoutTemplate: "homePage"
+
+  onBeforeAction: ->
+    if Meteor.loggingIn()
+      @render "loading"
+    else if Meteor.user()
+      @next()
+    else
+      @redirect "/"
+
 Router.route "/",
   name: "home"
-  controller: ApplicationContrller
+  action: ->
+    if Meteor.user()
+      @layout "homePage"
+      @render "splash"
+    else
+      @redirect "/sign-in"
+
+Router.route "/vote",
+  name: "accounts.vote"
+  template: "vote"
+  controller: "DashboardController"
 
 Router.route "/login",
   name: "login"
   controller: ApplicationContrller
 
-Router.route "/register",
-  name: "register"
-  controller: ApplicationContrller
+Router.route "/order",
+  name: "accounts.order"
+  template: "order"
+  controller: "DashboardController"
