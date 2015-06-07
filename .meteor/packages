@@ -26,3 +26,5 @@ force-ssl
 accounts-google
 service-configuration
 meteorhacks:sikka
+velocity:html-reporter
+xolvio:cucumber
