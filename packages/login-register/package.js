@@ -12,7 +12,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
-  api.addFiles('login-register.js');
+  api.addFiles('login-register.coffee');
 });
 
 Package.onTest(function(api) {

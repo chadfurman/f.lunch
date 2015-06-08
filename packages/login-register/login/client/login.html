@@ -1,7 +1,20 @@
 <!-- Footer -->
 <template name="login">
-   <div class="footer" id="landing-login" horizontal center-justified layout center>
-      <paper-button recenteringTouch="true"><a href="/sign-up">SIGN UP</a></paper-button>
-      <paper-button type="submit" raised>Login With Google</paper-button>
+   <div class="entry" fit layout vertical center center-justified>
+      <div class="entry-body">
+         <form id="sign-in" vertical center-justified layout center>
+            <h1 class="r-title"> Sign In </h1>
+            <paper-input-decorator floatingLabel label="email">
+               <input is="core-input" type="email" id="email" required="true" preventInvalidInput="true">
+            </paper-input-decorator>
+            <paper-input-decorator floatingLabel label="password">
+               <input is="core-input" type="password" id="password" required="true" preventInvalidInput="true">
+            </paper-input-decorator>
+            <paper-button id="login" type="submit">Submit</paper-button>
+         </form>
+      </div>
+   </div>
+   <div class="footerWrapper">
+      {{> l-login}}
    </div>
 </template>
