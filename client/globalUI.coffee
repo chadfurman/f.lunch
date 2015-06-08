@@ -21,7 +21,7 @@ class @GlobalUI
     @dialog.close()
 
 
-Template.globalLayout.helpers
+Template.main.helpers
   globalDialogTemplate: ->
     Session.get "global.ui.dialogTemplate"
 
@@ -32,7 +32,7 @@ Template.globalLayout.helpers
     Session.get "global.ui.dialogFullOnMobile"
 
 
-Template.globalLayout.events
+Template.main.events
   "core-overlay-close-completed [global-dialog]": (e) ->
     Session.set "global.ui.dialogTemplate", null
     Session.set "global.ui.dialogData", null
