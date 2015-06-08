@@ -61,7 +61,7 @@ Router.route "/vote",
 
 Router.route "/login",
   name: "login"
-  controller: ApplicationContrller
+  controller: ApplicationController
 
 Router.route "/order",
   name: "accounts.order"
